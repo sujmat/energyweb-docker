@@ -44,6 +44,11 @@ cd /build&&git clone https://github.com/energywebfoundation/energyweb-client && 
         #ls /build/energyweb-client/target/release/parity && \
         strip /build/energyweb-client/target/release/parity && \
  file /build/energyweb-client/target/release/parity&&mkdir -p /parity&& cp /build/energyweb-client/target/release/parity /parity&&\
+
+#clone energyweb-docker  from sujmat
+mkdir /ewf&&cd /ewf&&git clone https://github.com/sujmat/energyweb-docker && \
+        cd energyweb-docker && \
+        git pull && \
 #cleanup Docker image
  rm -rf /root/.cargo&&rm -rf /root/.multirust&&rm -rf /root/.rustup&&rm -rf /build&&\
  apt-get purge -y  \
@@ -66,3 +71,4 @@ cd /build&&git clone https://github.com/energywebfoundation/energyweb-client && 
 # setup ENTRYPOINT
 EXPOSE 8080 8545 8180
 ENTRYPOINT ["/parity/parity"]
+# --reserved-peers /ewf/energyweb-docker/eNodeList.txt"]
